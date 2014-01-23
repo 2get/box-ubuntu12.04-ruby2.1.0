@@ -10,7 +10,7 @@ keywords:
 script: |
   export RUBYVERSION=2.1.0
   sudo apt-get update
-  sudo apt-get install git zlib1g-dev libreadline-dev libqtwebkit-dev libimlib2-dev libcurl4-openssl-dev libmysql-dev libmagick++-dev
+  sudo apt-get install git zlib1g-dev libreadline-dev libqtwebkit-dev libimlib2-dev libcurl4-openssl-dev libmysqld-dev libmagick++-dev
   sudo apt-get remove ruby1.9.1
   cd $HOME
   mkdir rubyinstall
