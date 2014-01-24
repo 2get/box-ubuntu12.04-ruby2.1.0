@@ -1,5 +1,5 @@
 name: ubuntu12.04-ruby2.1.0
-version: 0.0.4
+version: 0.0.5
 inherits: wercker/ubuntu12.04-webessentials@0.0.12
 type: main
 platform: ubuntu@12.04
@@ -8,6 +8,10 @@ packages:
 keywords:
   - ruby
 script: |
+  # timezone JST
+  sudo rm /etc/localtime
+  sudo ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
   export RUBYVERSION=2.1.0
   sudo apt-get update
 
