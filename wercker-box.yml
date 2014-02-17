@@ -1,5 +1,5 @@
 name: ubuntu12.04-ruby2.1.0
-version: 0.0.9
+version: 0.1.0
 inherits: wercker/ubuntu12.04-webessentials@0.0.12
 type: main
 platform: ubuntu@12.04
@@ -31,7 +31,7 @@ script: |
   cd $HOME
   rm -fr rubyinstall
   echo "gem: --no-rdoc --no-ri" >> $HOME/.gemrc
-  sudo gem install bundler --pre
+  sudo gem install bundler
 
   echo "RAILS_ENV=test" | sudo tee -a /etc/environment
   echo "RACK_ENV=test" | sudo tee -a /etc/environment
