@@ -1,10 +1,10 @@
 name: ubuntu12.04-ruby2.1.0
-version: 0.1.0
+version: 0.1.1
 inherits: wercker/ubuntu12.04-webessentials@0.0.12
 type: main
 platform: ubuntu@12.04
 packages:
-  - ruby@2.1.0
+  - ruby@2.1.2
 keywords:
   - ruby
 script: |
@@ -12,7 +12,7 @@ script: |
   sudo rm /etc/localtime
   sudo ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-  export RUBYVERSION=2.1.0
+  export RUBYVERSION=2.1.2
   sudo apt-get update
 
   # ruby
@@ -61,7 +61,7 @@ box-detect:
   version :
   detect:
     - inFiles:
-      - Gemfile : ruby "2.1.0"
+      - Gemfile : ruby "2.1.2"
 
 default-build:
   ruby-on-rails:
