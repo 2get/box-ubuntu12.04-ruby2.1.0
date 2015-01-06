@@ -17,6 +17,9 @@ script: |
 
   # ruby
   sudo apt-get install git zlib1g-dev libreadline-dev libqtwebkit-dev
+  # ruby 2.2.0
+  sudo apt-get install libffi-dev
+
   sudo apt-get remove ruby1.9.1
   cd $HOME
   mkdir rubyinstall
@@ -38,9 +41,6 @@ script: |
 
   # dependency library
   sudo apt-get install libimlib2-dev libcurl4-openssl-dev libmysqld-dev libmagick++-dev libimage-exiftool-perl ffmpeg zip
-
-  # ruby 2.2.0
-  sudo apt-get install libffi-dev
 
   # mysql
   sudo apt-get purge mysql-server
