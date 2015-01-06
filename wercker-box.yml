@@ -1,10 +1,10 @@
 name: ubuntu12.04-ruby2.1.0
-version: 0.1.3
+version: 0.1.4
 inherits: wercker/ubuntu12.04-webessentials@0.0.12
 type: main
 platform: ubuntu@12.04
 packages:
-  - ruby@2.1.4
+  - ruby@2.2.0
 keywords:
   - ruby
 script: |
@@ -12,7 +12,7 @@ script: |
   sudo rm /etc/localtime
   sudo ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-  export RUBYVERSION=2.1.4
+  export RUBYVERSION=2.2.0
   sudo apt-get update
 
   # ruby
@@ -39,6 +39,9 @@ script: |
   # dependency library
   sudo apt-get install libimlib2-dev libcurl4-openssl-dev libmysqld-dev libmagick++-dev libimage-exiftool-perl ffmpeg zip
 
+  # ruby 2.2.0
+  sudo apt-get install libffi-dev
+
   # mysql
   sudo apt-get purge mysql-server
   sudo apt-get purge mysql-common
@@ -61,7 +64,7 @@ box-detect:
   version :
   detect:
     - inFiles:
-      - Gemfile : ruby "2.1.4"
+      - Gemfile : ruby "2.2.0"
 
 default-build:
   ruby-on-rails:
