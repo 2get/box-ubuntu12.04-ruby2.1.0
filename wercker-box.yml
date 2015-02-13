@@ -1,18 +1,22 @@
 name: ubuntu12.04-ruby2.1.0
-version: 0.1.4
+version: 0.1.5
 inherits: wercker/ubuntu12.04-webessentials@0.0.12
 type: main
 platform: ubuntu@12.04
 packages:
   - ruby@2.2.0
+  - nodejs@0.12.0
 keywords:
   - ruby
+  - nodejs
 script: |
   # timezone JST
   sudo rm /etc/localtime
   sudo ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
   export RUBYVERSION=2.2.0
+  export NODEVERSION=0.12.0
+
   sudo apt-get update
 
   # ruby
@@ -38,6 +42,22 @@ script: |
 
   echo "RAILS_ENV=test" | sudo tee -a /etc/environment
   echo "RACK_ENV=test" | sudo tee -a /etc/environment
+
+  # nodejs
+  mkdir nodeinstall
+  cd nodeinstall
+  wget http://nodejs.org/dist/v$NODEVERSION/node-v$NODEVERSION.tar.gz
+  tar xzf node-v$NODEVERSION.tar.gz
+  cd node-v$NODEVERSION
+  ./configure
+  make
+  sudo make install
+  cd $HOME
+  rm -fr nodeinstall
+  node -v
+
+  # grunt
+  sudo npm install -g grunt-cli
 
   # dependency library
   sudo apt-get install libimlib2-dev libcurl4-openssl-dev libmysqld-dev libmagick++-dev libimage-exiftool-perl ffmpeg zip
